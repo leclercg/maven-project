@@ -4,7 +4,7 @@ pipeline {
     parameters {
          string(name: 'tomcat_dev', defaultValue: '54.89.90.101', description: 'Staging Server')
          string(name: 'tomcat_prod', defaultValue: '54.89.90.101', description: 'Production Server')
-        string(name: 'myKey', defaultValue: "C:/Users/Georges/Downloads/tomcat-demo.pem", description: 'Staging Server SSH Key')
+        string(name: 'myKey', defaultValue: "C:/Users/Georges/Downloads/tomcat-demo-ppk.ppk", description: 'Staging Server SSH Key')
     }
 
     triggers {
