@@ -4,6 +4,7 @@ pipeline {
     parameters {
          string(name: 'tomcat_dev', defaultValue: '52.87.171.89', description: 'Staging Server')
          string(name: 'tomcat_prod', defaultValue: '52.87.171.89', description: 'Production Server')
+        string(name: 'myKey', defaultValue: "C:\\Users\\Georges\\Downloads\\tomcat-demo.pem", description: 'Staging Server SSH Key')
     }
 
     triggers {
@@ -27,13 +28,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "scp -i C:\Users\Georges\Downloads\tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        bat "scp -i ${params.myKey} **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "scp -i C:\Users\Georges\Downloads\tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
+                        echo 'Deloying to prod for fake'
                     }
                 }
             }
