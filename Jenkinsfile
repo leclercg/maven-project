@@ -28,7 +28,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "pscp -scp -i ${params.myKey} **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        bat "pscp -scp -i ${params.myKey} webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
 
